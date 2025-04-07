@@ -1,0 +1,5 @@
+flask
+numpy
+prometheus_client 
+pillow
+gunicorn
