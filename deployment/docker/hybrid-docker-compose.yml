@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  nybrid_service:
+    image: yuva19102003/lung-cancer-prediction:hybrid-model-backend-microservice-v2
+    ports:
+      - "5000:5000"
+    network_mode: "host"

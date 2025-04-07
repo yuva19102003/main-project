@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Image Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Medical Image Analysis</h1>
+            <p>Upload a medical image for analysis and detailed insights</p>
+        </header>
+
+        <div class="upload-section">
+            <div class="upload-container" id="dropZone">
+                <form id="uploadForm">
+                    <div class="upload-area">
+                        <img src="{{ url_for('static', filename='images/upload-icon.svg') }}" alt="Upload" id="uploadIcon">
+                        <img src="" alt="Preview" id="imagePreview" class="hidden">
+                        <input type="file" id="fileInput" name="file" accept="image/*" class="hidden">
+                        <p>Click or drag image to upload</p>
+                    </div>
+                    <button type="submit" id="analyzeBtn" disabled>Analyze Image</button>
+                </form>
+            </div>
+            <div id="error" class="error hidden"></div>
+        </div>
+
+        <div id="results" class="hidden">
+            <div class="prediction-results">
+                <h2>Prediction Results</h2>
+                <div class="model-predictions">
+                    <div class="prediction-card">
+                        <h3>DenseNet</h3>
+                        <p class="prediction"></p>
+                        <p class="confidence"></p>
+                    </div>
+                    <div class="prediction-card">
+                        <h3>EfficientNet</h3>
+                        <p class="prediction"></p>
+                        <p class="confidence"></p>
+                    </div>
+                    <div class="prediction-card">
+                        <h3>ResNet</h3>
+                        <p class="prediction"></p>
+                        <p class="confidence"></p>
+                    </div>
+                </div>
+                <div class="final-prediction">
+                    <h3>Final Prediction</h3>
+                    <p id="finalPrediction"></p>
+                </div>
+            </div>
+
+            <div class="biogpt-results hidden">
+                <h2>Detailed Analysis</h2>
+                <div class="analysis-grid">
+                    <div class="analysis-card">
+                        <h3>Definition</h3>
+                        <p id="definition"></p>
+                    </div>
+                    <div class="analysis-card">
+                        <h3>Danger Level</h3>
+                        <p id="dangerLevel"></p>
+                    </div>
+                    <div class="analysis-card">
+                        <h3>Symptoms</h3>
+                        <p id="symptoms"></p>
+                    </div>
+                    <div class="analysis-card">
+                        <h3>Causes</h3>
+                        <p id="causes"></p>
+                    </div>
+                    <div class="analysis-card">
+                        <h3>Risk Factors</h3>
+                        <p id="riskFactors"></p>
+                    </div>
+                    <div class="analysis-card">
+                        <h3>Survival Rate</h3>
+                        <p id="survivalRate"></p>
+                    </div>
+                    <div class="analysis-card">
+                        <h3>Diagnosis Methods</h3>
+                        <p id="diagnosisMethods"></p>
+                    </div>
+                    <div class="analysis-card">
+                        <h3>Treatment Options</h3>
+                        <p id="treatmentOptions"></p>
+                    </div>
+                </div>
+                <div class="recommended-actions">
+                    <h3>Recommended Actions</h3>
+                    <p id="recommendedActions"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
