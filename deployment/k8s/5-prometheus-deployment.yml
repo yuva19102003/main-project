@@ -19,6 +19,13 @@ spec:
         image: yuva19102003/lung-cancer-prediction:prometheus-v1
         ports:
         - containerPort: 9090
+        volumeMounts:
+        - name: prometheus-storage
+          mountPath: /prometheus
+      volumes:
+      - name: prometheus-storage
+        persistentVolumeClaim:
+          claimName: prometheus-pvc
 ---
 apiVersion: v1
 kind: Service
