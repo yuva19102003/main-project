@@ -8,29 +8,49 @@
 </head>
 <body>
     <div class="container">
+        <!-- Header with Navigation Buttons -->
         <header>
-            <h1>Medical Image Analysis</h1>
-            <p>Upload a medical image for analysis and detailed insights</p>
+            <nav class="navbar">
+                <div class="nav-left">
+                    <button id="homeBtn">Home</button>
+                </div>
+                <h1>Medical Image Analysis</h1>
+                <div class="nav-right">
+                    <button id="monitoringBtn" type="button">Monitoring</button>
+                    <button id="analyzeBtnNav">Analyze</button>
+                </div>
+            </nav>
         </header>
 
-        <div class="upload-section">
-            <div class="upload-container" id="dropZone">
-                <form id="uploadForm">
-                    <div class="upload-area">
-                        <img src="{{ url_for('static', filename='images/upload-icon.svg') }}" alt="Upload" id="uploadIcon">
-                        <img src="" alt="Preview" id="imagePreview" class="hidden">
-                        <input type="file" id="fileInput" name="file" accept="image/*" class="hidden">
-                        <p>Click or drag image to upload</p>
-                    </div>
-                    <button type="submit" id="analyzeBtn" disabled>Analyze Image</button>
-                </form>
-            </div>
-            <div id="error" class="error hidden"></div>
-        </div>
+        <!-- Home Page Content -->
+        <section id="homeSection">
+            <h2>Welcome to the Medical Image Analysis System</h2>
+            <p>This project uses AI-based image processing to analyze medical images for potential lung cancer detection.</p>
+            <p>We utilize GAN-based enhancement and a hybrid classifier combining EfficientNet, ResNet, and DenseNet.</p>
+        </section>
 
-        <div id="results" class="hidden">
+        <!-- Analyze Section (Initially Hidden) -->
+        <section id="analyzeSection" class="hidden">
+            <div class="upload-section">
+                <div class="upload-container" id="dropZone">
+                    <form id="uploadForm">
+                        <div class="upload-area">
+                            <img src="{{ url_for('static', filename='images/upload-icon.svg') }}" alt="Upload" id="uploadIcon">
+                            <img src="" alt="Preview" id="imagePreview" class="hidden">
+                            <input type="file" id="fileInput" name="file" accept="image/*" class="hidden">
+                            <p>Click or drag image to upload</p>
+                        </div>
+                        <button type="submit" id="analyzeBtn" disabled>Analyze Image</button>
+                    </form>
+                </div>
+                <div id="error" class="error hidden"></div>
+            </div>
+        </section>
+
+        <!-- Analysis Section with Biogpt Results -->
+        <div id="analysisSection" class="hidden">
             <div class="prediction-results">
-                <h2>Prediction Results</h2>
+                <h2 style="color: black;">Prediction Results</h2>
                 <div class="model-predictions">
                     <div class="prediction-card">
                         <h3>DenseNet</h3>
@@ -55,7 +75,7 @@
             </div>
 
             <div class="biogpt-results hidden">
-                <h2>Detailed Analysis</h2>
+                <h2 style="color: black;">Detailed Analysis</h2>
                 <div class="analysis-grid">
                     <div class="analysis-card">
                         <h3>Definition</h3>

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: grafana
-        image: yuva19102003/lung-cancer-prediction:grafana-v1
+        image: yuva19102003/lung-cancer-prediction:grafana-v2
         ports:
         - containerPort: 3000
 ---

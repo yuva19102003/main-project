@@ -31,4 +31,5 @@ spec:
   - protocol: TCP
     port: 5000
     targetPort: 5000
-  type: ClusterIP # Change to NodePort or LoadBalancer if needed
+    nodePort: 30500
+  type: NodePort # Change to NodePort or LoadBalancer if needed

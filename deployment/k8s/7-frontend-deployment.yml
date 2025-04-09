@@ -1,23 +1,35 @@
-apiVersion: v1
-kind: PersistentVolume
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: prometheus-pv
+  name: frontend-service
+  labels:
+    app: frontend-service
 spec:
-  capacity:
-    storage: 5Gi
-  accessModes:
-  - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  hostPath:
-    path: "/mnt/data/prometheus" # This path persists in Minikube VM
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend-service
+  template:
+    metadata:
+      labels:
+        app: frontend-service
+    spec:
+      containers:
+      - name: frontend-service
+        image: yuva19102003/lung-cancer-prediction:frontend-microservice-v3
+        ports:
+        - containerPort: 3001
 ---
 apiVersion: v1
-kind: PersistentVolumeClaim
+kind: Service
 metadata:
-  name: prometheus-pvc
+  name: frontend-service-service
 spec:
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: 5Gi
+  selector:
+    app: frontend-service
+  ports:
+  - protocol: TCP
+    port: 3001
+    targetPort: 3001
+    nodePort: 30001 # Fixed NodePort
+  type: NodePort
